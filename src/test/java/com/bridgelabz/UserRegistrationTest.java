@@ -1,112 +1,105 @@
 package com.bridgelabz;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class UserRegistrationTest {
+
+    private UserRegistration userRegistration;
+
+    @Before
+    public void setUp() throws Exception {
+        userRegistration=new UserRegistration();
+    }
+
     @Test
     public void whenGivenFirstName_ShouldReturnValidName() {
-        UserRegistration userRegistration = new UserRegistration();
-        String firstName = userRegistration.userFirstName("Sachin");
+        String firstName = userRegistration.validateUserFirstName("Sachin");
         Assert.assertEquals("Valid", firstName);
     }
 
     @Test
     public void whenGivenFirstName_WithCaps_ShouldReturnValidName(){
-        UserRegistration userRegistration=new UserRegistration();
-        String firstName=userRegistration.userFirstName("Sachin");
+        String firstName=userRegistration.validateUserFirstName("Sachin");
         Assert.assertEquals("Valid",firstName);
     }
 
     @Test
     public void whenGivenFistName_WithMinimumThreeCharacter_ShouldReturnValidName() {
-        UserRegistration userRegistration=new UserRegistration();
-        String firstName=userRegistration.userFirstName("Sac");
+        String firstName=userRegistration.validateUserFirstName("Sac");
         Assert.assertEquals("Valid",firstName);
     }
     @Test
     public void whenGivenFirstName_WithLessTwoChar_ShouldReturnInvalidName() {
-        UserRegistration userRegistration=new UserRegistration();
-        String firstName=userRegistration.userFirstName("sa");
+        String firstName=userRegistration.validateUserFirstName("sa");
         Assert.assertEquals("Invalid",firstName);
     }
 
     @Test
     public void whenGivenFirstName_WithoutCaps_ShouldReturnInvalidName() {
-        UserRegistration userRegistration=new UserRegistration();
-        String firstName=userRegistration.userFirstName("sachin");
+        String firstName=userRegistration.validateUserFirstName("sachin");
         Assert.assertEquals("Invalid",firstName);
     }
 
     @Test
     public void whenGivenFirstName_IfSpaceEncountered_ShouldReturnInvalidName(){
-        UserRegistration userRegistration=new UserRegistration();
-        String firstName=userRegistration.userFirstName("Sac in");
+        String firstName=userRegistration.validateUserFirstName("Sac in");
         Assert.assertEquals("Invalid",firstName);
     }
 
     @Test
     public void whenGivenLastName_ShouldReturnValidName() {
-        UserRegistration userRegistration = new UserRegistration();
-        String lastName = userRegistration.userLastName("Dabhade");
+        String lastName = userRegistration.validateUserLastName("Dabhade");
         Assert.assertEquals("Valid",lastName);
     }
 
     @Test
     public void whenGivenLastName_WithCaps_ShouldReturnValidName(){
-        UserRegistration userRegistration=new UserRegistration();
-        String lastName=userRegistration.userLastName("Dabhade");
+        String lastName=userRegistration.validateUserLastName("Dabhade");
         Assert.assertEquals("Valid",lastName);
     }
 
     @Test
     public void whenGivenLastName_WithMinimumThreeCharacter_ShouldReturnValidName() {
-        UserRegistration userRegistration = new UserRegistration();
-        String lastName = userRegistration.userLastName("DDab");
+        String lastName = userRegistration.validateUserLastName("DDab");
         Assert.assertEquals("Valid", lastName);
     }
 
     @Test
     public void whenGivenLastName_WithLessTwoChar_ShouldReturnInvalidName() {
-        UserRegistration userRegistration=new UserRegistration();
-        String lastName=userRegistration.userLastName("sa");
+        String lastName=userRegistration.validateUserLastName("sa");
         Assert.assertEquals("Invalid",lastName);
     }
 
     @Test
     public void whenGivenLastName_WithoutCaps_ShouldReturnInvalidName() {
-        UserRegistration userRegistration=new UserRegistration();
-        String lastName=userRegistration.userLastName("sachin");
+        String lastName=userRegistration.validateUserLastName("sachin");
         Assert.assertEquals("Invalid",lastName);
     }
 
     @Test
     public void whenGivenLastName_IfSpaceEncountered_ShouldReturnInvalidName(){
-        UserRegistration userRegistration=new UserRegistration();
-        String lastName=userRegistration.userLastName("Sac in");
+        String lastName=userRegistration.validateUserLastName("Sac in");
         Assert.assertEquals("Invalid",lastName);
     }
 
     //User email validation
     @Test
     public void whenGivenEmail_IfContainsMondatoryParts_ShouldReturnValidEmail(){
-        UserRegistration userRegistration=new UserRegistration();
-        String emailId=userRegistration.userEmailId("abc.xyz@bl.co.in");
+        String emailId=userRegistration.validateUserEmail("abc.xyz@bl.co.in");
         Assert.assertEquals("Valid",emailId);
     }
 
     @Test
     public void whenGivenEmail_IfHasOptionalPart_ShouldReturnValidEmail(){
-        UserRegistration userRegistration=new UserRegistration();
-        String emailId=userRegistration.userEmailId("abc@bl.co");
+        String emailId=userRegistration.validateUserEmail("abc@bl.co");
         Assert.assertEquals("Valid",emailId);
     }
 
     @Test
     public void whenGivenEmail_IfInvalid_ShouldReturnInvalidEmail() {
-        UserRegistration userRegistration = new UserRegistration();
-        String emailId=userRegistration.userEmailId("dabhade904@gmail.com.com.in");
+        String emailId=userRegistration.validateUserEmail("dabhade904@gmail.com.com.in");
         Assert.assertEquals("Invalid",emailId);
     }
-
 }
