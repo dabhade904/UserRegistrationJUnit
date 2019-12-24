@@ -129,8 +129,27 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenMobile_WhenPassSpaceAtAnyPosition_ShouldReturnFalse() {
+    public void whenGivenMobile_WhenPassSpaceAtAnyPosition_ShouldReturnFalse() {
         boolean mobileNumber=userRegistration.validateMobileNumber("91 88889 48934");
         Assert.assertFalse(mobileNumber);
+    }
+
+//  Password validation minimum eight characters
+    @Test
+    public void whenGivenPassword_IfMinimumEightCharacters_ShouldReturnTrue(){
+        boolean userPassword=userRegistration.validateUserPassword("pass2122");
+        Assert.assertTrue(userPassword);
+    }
+
+    @Test
+    public void whenGivenPassword_WhenSpecialSymbol_ShouldReturnFalse(){
+       boolean userPassword=userRegistration .validateUserPassword("pass@123");
+        Assert.assertFalse(userPassword);
+    }
+
+    @Test
+    public void whenGivenPassword_IfCharacterAboveEight_ShouldReturnFalse() {
+        boolean userPassword=userRegistration.validateUserPassword("pass123");
+        Assert.assertFalse(userPassword);
     }
 }
