@@ -64,4 +64,19 @@ public class UserRegistration {
             return false;
         }
     }
+
+    public boolean validateUserPasswordUpperCase(String upperCasePassword) {
+        String pass=("[a-z0-9]*[A-Z]+[a-zA-Z0-9]*$");
+        Pattern passwordPattern=Pattern.compile(pass);
+        Matcher matcher=passwordPattern.matcher(upperCasePassword);
+        if(matcher.matches())
+        {
+            return  true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

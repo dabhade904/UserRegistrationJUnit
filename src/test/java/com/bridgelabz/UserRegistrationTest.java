@@ -148,8 +148,28 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void whenGivenPassword_IfCharacterAboveEight_ShouldReturnFalse() {
+    public void whenGivenPassword_IfCharacterLessEight_ShouldReturnFalse() {
         boolean userPassword=userRegistration.validateUserPassword("pass123");
         Assert.assertFalse(userPassword);
     }
+
+    //  Password validation at least 1 upper case
+    @Test
+    public void whenGivenPassword_whenUpperCase_ShouldReturnTrue(){
+        boolean userPassword=userRegistration.validateUserPasswordUpperCase("passworD");
+        Assert.assertTrue(userPassword);
+    }
+
+    @Test
+    public void whenGivenPasswordUpper_WhenSpecialSymbol_ShouldReturnFalse(){
+        boolean userPassword=userRegistration .validateUserPasswordUpperCase("Pass@123");
+        Assert.assertFalse(userPassword);
+    }
+
+    @Test
+    public void whenGivenPasswordUpper_IfCharacterLessEight_ShouldReturnFalse() {
+        boolean userPassword=userRegistration.validateUserPasswordUpperCase("pass123");
+        Assert.assertFalse(userPassword);
+    }
+
 }
