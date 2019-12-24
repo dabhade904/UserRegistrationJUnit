@@ -102,4 +102,35 @@ public class UserRegistrationTest {
         String emailId=userRegistration.validateUserEmail("dabhade904@gmail.com.com.in");
         Assert.assertEquals("Invalid",emailId);
     }
+
+//  Validate mobile number
+    @Test
+    public void whenGivenMobileNumber_WhenProper_ShouldReturnTrue()
+    {
+        boolean mobileNumber=userRegistration.validateMobileNumber("91 8888948943");
+        Assert.assertTrue(mobileNumber);
+    }
+    @Test
+    public void whenGivenMobileNumber_WhenNotGivenSpace_ShouldReturnFalse(){
+        boolean mobileNumber=userRegistration.validateMobileNumber("9188888948943");
+        Assert.assertFalse(mobileNumber);
+    }
+
+    @Test
+    public void whenGivenMobileNumber_WhenPassCharacter_ShouldReturnFalse(){
+        boolean mobileNumber=userRegistration.validateMobileNumber("abcdefg");
+        Assert.assertFalse(mobileNumber);
+    }
+
+    @Test
+    public void whenGivenMobileNumber_WhenSpecialCharacter_ShouldReturnFalse(){
+        boolean mobileNumber=userRegistration.validateMobileNumber("abcdefg");
+        Assert.assertFalse(mobileNumber);
+    }
+
+    @Test
+    public void givenMobile_WhenPassSpaceAtAnyPosition_ShouldReturnFalse() {
+        boolean mobileNumber=userRegistration.validateMobileNumber("91 88889 48934");
+        Assert.assertFalse(mobileNumber);
+    }
 }
