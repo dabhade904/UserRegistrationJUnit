@@ -10,6 +10,17 @@ public class UserRegistration {
         {
             return "Invalid";
         }
-
     }
+
+    public String userLastName(String lastName){
+        if(lastName.matches("^[A-Z]{1}[a-zA-Z]{2,}$"))
+        {
+            return "Valid";
+        }
+        else
+        {
+            return  "Invalid";
+        }
+    }
+
 }
