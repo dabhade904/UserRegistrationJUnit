@@ -82,8 +82,8 @@ public class UserRegistration {
         }
     }
 
-    public boolean validateUserPasswordNumericNumber(String password) {
-        String pass=("((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8})");
+    public  boolean passwordValidation(String password){
+        String pass="(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[+@#$%^&*!.()-]).{8,}";
         Pattern passwordPattern=Pattern.compile(pass);
         Matcher matcher=passwordPattern.matcher(password);
         if(matcher.matches())
@@ -91,4 +91,6 @@ public class UserRegistration {
         else
             return false;
     }
+
 }
+

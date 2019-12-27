@@ -84,6 +84,26 @@ public class UserRegistrationTest {
         Assert.assertEquals("Invalid",lastName);
     }
 
+    @Test
+    public void whenGivenEmail_IfContainsMondatoryParts_ShouldReturnValidEmail(){
+        boolean emailId=userRegistration.validateUserEmail("abc.xyz@bl.co.in");
+        Assert.assertTrue(emailId);
+    }
+
+    @Test
+    public void whenGivenEmail_IfHasOptionalPart_ShouldReturnValidEmail(){
+        boolean emailId=userRegistration.validateUserEmail("abc@bl.co");
+        Assert.assertTrue(emailId);
+    }
+
+    @Test
+    public void whenGivenEmail_IfInvalid_ShouldReturnInvalidEmail() {
+        boolean emailId=userRegistration.validateUserEmail("dabhade904@gmail.com.com.in");
+        Assert.assertFalse(emailId);
+    }
+
+
+
 //  Validate mobile number
     @Test
     public void whenGivenMobileNumber_WhenProper_ShouldReturnTrue()
@@ -151,6 +171,14 @@ public class UserRegistrationTest {
     public void whenGivenPasswordUpper_IfCharacterLessEight_ShouldReturnFalse() {
         boolean userPassword=userRegistration.validateUserPasswordUpperCase("pass123");
         Assert.assertFalse(userPassword);
+    }
+
+
+    // ATLEAST 1 NUMERIC VALUE
+    @Test
+    public void wehnGivenPassword_IfNoNumericValue_ReturnFalse() {
+        boolean password = userRegistration.passwordValidation("sachinA");
+        Assert.assertFalse(password);
     }
 
 }
