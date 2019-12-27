@@ -181,4 +181,11 @@ public class UserRegistrationTest {
         Assert.assertFalse(password);
     }
 
+    // 1 SPECIAL SYMBOL
+    @Test
+    public void ValidatePswd_IfNoSpecialSymbol_ReturnInvalid() {
+        boolean password= userRegistration.passwordValidation("sIchin12");
+        Assert.assertFalse(password);
+    }
+
 }
