@@ -26,14 +26,17 @@ public class UserRegistration {
         }
     }
 
-    public String validateUserEmail(String emailId) {
-        if (emailId.matches("^[a-zA-Z0-9][-._+a-zA-Z0-9]*[@]{1}[a-z]*[.]{1}[a-z]{2,3}[.]{0,1}([a-z]{2,3}){0,1}$"))
+    public boolean validateUserEmail(String emailId) {
+        Pattern mobilePattern= Pattern.compile("^[a-zA-Z0-9]{1,}[._+-]?[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}([.][a-zA-Z]{2,3}){1,2}$");
+        Matcher matcher=mobilePattern.matcher(emailId);
+
+        if (matcher.matches())
         {
-            return "Valid";
+            return true;
         }
         else
         {
-            return "Invalid";
+            return false;
         }
     }
 
@@ -79,4 +82,13 @@ public class UserRegistration {
         }
     }
 
+    public boolean validateUserPasswordNumericNumber(String password) {
+        String pass=("((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8})");
+        Pattern passwordPattern=Pattern.compile(pass);
+        Matcher matcher=passwordPattern.matcher(password);
+        if(matcher.matches())
+            return true;
+        else
+            return false;
+    }
 }

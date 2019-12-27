@@ -84,25 +84,6 @@ public class UserRegistrationTest {
         Assert.assertEquals("Invalid",lastName);
     }
 
-    //User email validation
-    @Test
-    public void whenGivenEmail_IfContainsMondatoryParts_ShouldReturnValidEmail(){
-        String emailId=userRegistration.validateUserEmail("abc.xyz@bl.co.in");
-        Assert.assertEquals("Valid",emailId);
-    }
-
-    @Test
-    public void whenGivenEmail_IfHasOptionalPart_ShouldReturnValidEmail(){
-        String emailId=userRegistration.validateUserEmail("abc@bl.co");
-        Assert.assertEquals("Valid",emailId);
-    }
-
-    @Test
-    public void whenGivenEmail_IfInvalid_ShouldReturnInvalidEmail() {
-        String emailId=userRegistration.validateUserEmail("dabhade904@gmail.com.com.in");
-        Assert.assertEquals("Invalid",emailId);
-    }
-
 //  Validate mobile number
     @Test
     public void whenGivenMobileNumber_WhenProper_ShouldReturnTrue()
